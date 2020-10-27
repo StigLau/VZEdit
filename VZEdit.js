@@ -1214,7 +1214,7 @@ send_data_to_vz = function() {
 	SysexMessage = SysexMessage.concat(toneData);
 	SysexMessage = SysexMessage.concat(SYSEX_CHECKSUM);
 	SysexMessage = SysexMessage.concat(SYSEX_END);
-	Jazz.MidiOutLong(SysexMessage);
+	sendStuffToSysex(SysexMessage);
 };
 
 function lineMix(line) {

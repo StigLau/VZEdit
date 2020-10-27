@@ -1,3 +1,5 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,9 @@
 	max-height: 0px;
 }
 </style>
-<script src="jquery-2.1.1.min.js"></script>
+<script src="jquery-2.1.1.js"></script>
+<script src="webmidiAdaptation.js"></script>
+<script src="guiAdaptation.js"></script>
 <link rel="stylesheet" type="text/css" href="vzedit.css">
 </head>
 
@@ -57,35 +61,18 @@
 			<button onclick='window.open("VZEditorReferenceGuide.pdf" )'> Help </button>
 		
 
-		
-		MIDI Out: <select id=selectmidi onchange='changemidi();'></select>
-		Channel: <input type="text" id="midiChannelTxt" onchange='changeMidiChannel(value)'>
-	</div>
+        <div class="controlpanel"><!-- TODO Control panel doesn't show name of midi devices and channels at the moment -->
+            <h2>Setup</h2>
+            <div class="controlflexlayout">
+                <div id="midiSetup">
+                    <h3>Midi Device Setup</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<script>
-	
-		var Jazz = document.getElementById("Jazz1");
-		if (!Jazz || !Jazz.isJazz)
-			Jazz = document.getElementById("Jazz2");
-		function changemidi() {
-			Jazz.MidiOutOpen(select.options[select.selectedIndex].value);
-		}
-		var select = document.getElementById('selectmidi');
-		try {
-			var list = Jazz.MidiOutList();
-			for ( var i in list) {
-				select[i] = new Option(list[i], list[i], i == 0, i == 0);
-			}
-			document.getElementById('selectmididiv').className = '';
-		} catch (err) {
-		}
-		if (Jazz.isJazz) {
-			Jazz.MidiOutOpen(0);
-		}
-		
-	</script>
-	<script src="VZBank.js"></script>
-	<script src="VZTone.js"></script>
-	<script src="VZEdit.js"></script>
+<script src="VZBank.js"></script>
+<script src="VZTone.js"></script>
+<script src="VZEdit.js"></script>
 </body>
 </html>
